@@ -3,7 +3,7 @@ module Ingestor
     def document
       @document
     end
-    
+
     def header
       @header
     end
@@ -45,14 +45,14 @@ module Ingestor
       else
         parser.sample!
       end
-            
+
       self
     end
 
     # To be called from Parsers, send a attributes, get a record
     def process_entry( attrs )
       options[:before].call(attrs) if options[:before]
-            
+
       record = finder ? finder.call(attrs) : nil
 
       process_record(attrs,record)
@@ -65,7 +65,8 @@ module Ingestor
     end
 
     def default_processor(attrs,record)
-      record.update_attributes( attrs )
+      #record.update_attributes( attrs )
+      #records << record
     end
 
     def load_remote
@@ -87,7 +88,7 @@ module Ingestor
       @tempfile     = @document
       @document = Tempfile.new("decompressed", working_directory)
       @document.binmode
-      
+
       Zip::ZipFile.open(@tempfile.path) do |zipfile|
         zipfile.each do |entry|
           istream = entry.get_input_stream

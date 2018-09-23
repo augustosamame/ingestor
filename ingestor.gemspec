@@ -17,10 +17,12 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
   gem.add_dependency "docile"
+  gem.add_dependency "zip-zip" #for backwards compatibilty with rubyzip > 1.0.0
   gem.add_dependency "rubyzip", '~> 1.2.1'
   gem.add_dependency "thor"
   gem.add_dependency "nokogiri", '> 1.5.6'
   #gem.add_dependency "activesupport", '>= 3.2.0'
   gem.add_dependency "activesupport"
   gem.add_dependency 'multi_json', '~> 1.0'
+  gem.add_dependency "activerecord-import"
 end
